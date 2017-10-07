@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EF6C00</color>
+    <color name="colorPrimaryDark">#E65100</color>
+    <color name="colorAccent">#33691E</color>
+
+    <color name="black">#000000</color>
+    <color name="bpTransparent">#00000000</color>
+    <color name="transblack">#B3000000</color>
+    <color name="dark_yellow_login">#ddac0a</color>
+    <color name="yellow_login">#ffc400</color>
+    <color name="yellow_login_background">#33ffc400</color>
+</resources>
