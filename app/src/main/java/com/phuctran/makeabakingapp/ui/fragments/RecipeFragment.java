@@ -5,10 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.phuctran.makeabakingapp.Injection;
 import com.phuctran.makeabakingapp.R;
-import com.phuctran.makeabakingapp.domain.models.Ingredient;
 import com.phuctran.makeabakingapp.domain.models.Recipe;
-import com.phuctran.makeabakingapp.domain.models.Step;
 import com.phuctran.makeabakingapp.mvp.presenters.RecipePresenter;
 import com.phuctran.makeabakingapp.mvp.views.RecipeContract;
 import com.phuctran.makeabakingapp.ui.adapters.RecipeIngredientStepAdapter;
@@ -23,18 +22,18 @@ import butterknife.BindView;
 
 public class RecipeFragment extends BaseDetailFragment implements RecipeContract.View, RecipeIngredientStepAdapter.ListItemClickListener {
     private static final String TAG = RecipesFragment.class.getSimpleName();
-    public static final String ARGS_RECIPE = "ARGS_RECIPE";
+    public static final String ARGS_RECIPE_ID = "ARGS_RECIPE_ID";
 
     @BindView(R.id.recycler_view)
     RecyclerView mRvRecipes;
 
     private RecipeContract.Presenter mPresenter;
-    private Recipe mRecipe;
+    private int mRecipeId;
     private RecipeIngredientStepAdapter mRecipeIngredientStepAdapter;
 
-    public static RecipeFragment newInstance(Recipe recipe) {
+    public static RecipeFragment newInstance(int recipeId) {
         Bundle bundle = new Bundle();
-        bundle.putParcelable(ARGS_RECIPE, Parcels.wrap(recipe));
+        bundle.putInt(ARGS_RECIPE_ID, recipeId);
 
         RecipeFragment fragment = new RecipeFragment();
         fragment.setArguments(bundle);
@@ -42,14 +41,14 @@ public class RecipeFragment extends BaseDetailFragment implements RecipeContract
     }
 
     public RecipeFragment() {
-        this.mPresenter = new RecipePresenter(this);
+        this.mPresenter = new RecipePresenter(this, Injection.provideGetRecipeUseCase());
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null && getArguments().containsKey(ARGS_RECIPE))
-            this.mRecipe = Parcels.unwrap(getArguments().getParcelable(ARGS_RECIPE));
+        if (getArguments() != null && getArguments().containsKey(ARGS_RECIPE_ID))
+            this.mRecipeId = getArguments().getInt(ARGS_RECIPE_ID);
     }
 
     @Override
@@ -76,30 +75,33 @@ public class RecipeFragment extends BaseDetailFragment implements RecipeContract
 
     @Override
     protected void updateFollowingViewBinding() {
-        setActionBarTitle(mRecipe.getName());
+
         setupRecyclerView();
+        mPresenter.getRecipe(mRecipeId);
     }
 
     private void setupRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
         mRvRecipes.setLayoutManager(layoutManager);
         mRvRecipes.setHasFixedSize(true);
-        mRecipeIngredientStepAdapter = new RecipeIngredientStepAdapter(getContext(), mRecipe.getIngredients(), mRecipe.getSteps(), this);
-        mRvRecipes.setAdapter(mRecipeIngredientStepAdapter);
-    }
-
-    @Override
-    public void onIngradientListItemClick(Ingredient ingredient) {
 
     }
 
+
     @Override
-    public void onStepListItemClick(Step step) {
-        goToRecipeStepFragment(step);
+    public void onStepListItemClick(int stepOrder) {
+        goToRecipeStepFragment(stepOrder);
     }
 
     @Override
     public void setPresenter(RecipeContract.Presenter presenter) {
         mPresenter = presenter;
+    }
+
+    @Override
+    public void showRecipe(Recipe mRecipe) {
+        setActionBarTitle(mRecipe.getName());
+        mRecipeIngredientStepAdapter = new RecipeIngredientStepAdapter(getContext(), mRecipe, this);
+        mRvRecipes.setAdapter(mRecipeIngredientStepAdapter);
     }
 }

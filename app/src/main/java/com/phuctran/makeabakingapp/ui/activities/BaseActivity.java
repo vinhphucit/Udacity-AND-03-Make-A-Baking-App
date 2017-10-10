@@ -26,7 +26,7 @@ public abstract class BaseActivity extends AppCompatActivity implements BaseFrag
         ButterKnife.bind(this);
         Timber.plant(new Timber.DebugTree());
         updateFollowingViewBinding(savedInstanceState);
-
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_right);
     }
 
     protected abstract void updateFollowingViewBinding(Bundle savedInstanceState);

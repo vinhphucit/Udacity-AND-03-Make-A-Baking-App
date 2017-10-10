@@ -25,21 +25,17 @@ import butterknife.ButterKnife;
 
 public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
 
-    private List<Ingredient> mIngredients;
-    private List<Step> mSteps;
     private Context mContext;
+    private Recipe mRecipe;
     final private RecipeIngredientStepAdapter.ListItemClickListener mOnClickListener;
 
     public interface ListItemClickListener {
-        void onIngradientListItemClick(Ingredient ingredient);
-
-        void onStepListItemClick(Step step);
+        void onStepListItemClick(int stepOrder);
     }
 
-    public RecipeIngredientStepAdapter(Context context, List<Ingredient> mIngredients, List<Step> mSteps, RecipeIngredientStepAdapter.ListItemClickListener listener) {
+    public RecipeIngredientStepAdapter(Context context, Recipe recipe, RecipeIngredientStepAdapter.ListItemClickListener listener) {
         this.mContext = context;
-        this.mIngredients = mIngredients;
-        this.mSteps = mSteps;
+        this.mRecipe = recipe;
         this.mOnClickListener = listener;
     }
 
@@ -66,7 +62,7 @@ public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (position < mIngredients.size()) {
+        if (position < mRecipe.getIngredients().size()) {
             ((IngradientViewHolder) holder).bind(position);
         } else {
             ((StepViewHolder) holder).bind(position);
@@ -76,13 +72,13 @@ public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return mIngredients.size() + mSteps.size();
+        return mRecipe.getIngredients().size() + mRecipe.getSteps().size();
     }
 
 
     @Override
     public int getItemViewType(int position) {
-        if (position < mIngredients.size()) {
+        if (position < mRecipe.getIngredients().size()) {
             return 0;
         }
         return 1;
@@ -101,7 +97,7 @@ public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
         }
 
         void bind(int position) {
-            final Step recipe = mSteps.get(position - mIngredients.size());
+            final Step recipe = mRecipe.getSteps().get(position - mRecipe.getIngredients().size());
 
             if (recipe.getThumbnailURL().isEmpty()) {
                 recipe_step_image.setImageResource(R.drawable.placeholder);
@@ -115,11 +111,11 @@ public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
         @Override
         public void onClick(View view) {
             int clickPosition = getAdapterPosition();
-            mOnClickListener.onStepListItemClick(mSteps.get(clickPosition - mIngredients.size()));
+            mOnClickListener.onStepListItemClick(clickPosition - mRecipe.getIngredients().size());
         }
     }
 
-    class IngradientViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    class IngradientViewHolder extends RecyclerView.ViewHolder  {
         @BindView(R.id.recipe_ingredient_name)
         TextView recipe_ingredient_name;
         @BindView(R.id.recipe_ingredient_quantity)
@@ -128,20 +124,14 @@ public class RecipeIngredientStepAdapter extends RecyclerView.Adapter {
         public IngradientViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            itemView.setOnClickListener(this);
         }
 
         void bind(int position) {
-            final Ingredient recipe = mIngredients.get(position);
+            final Ingredient recipe = mRecipe.getIngredients().get(position);
 
             recipe_ingredient_name.setText(recipe.getIngredient());
             recipe_ingredient_quantity.setText(String.valueOf(recipe.getQuantity()));
         }
 
-        @Override
-        public void onClick(View view) {
-            int clickPosition = getAdapterPosition();
-            mOnClickListener.onIngradientListItemClick(mIngredients.get(clickPosition));
-        }
     }
 }

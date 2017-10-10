@@ -5,7 +5,9 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -29,13 +31,15 @@ public class RecipeDetailActivity extends BaseActivity implements BaseDetailFrag
     private static final String FRAGMENT_RECIPE_STEP = "FRAGMENT_RECIPE_STEP";
     public static final String ARGS_RECIPE_DETAIL = "ARGS_RECIPE_DETAIL";
 
-    private Recipe mRecipe;
+    private int mRecipeId;
 
     private boolean mTwoPane;
 
     @Nullable
     @BindView(R.id.fragmentStepContainer)
     View fragmentViewStepContainer;
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -49,34 +53,54 @@ public class RecipeDetailActivity extends BaseActivity implements BaseDetailFrag
         int menuItemThatWasSelected = item.getItemId();
         switch (menuItemThatWasSelected) {
             case R.id.action_add_to_widget:
-                BakingPreferences.getInstance().setWidgetRecipeId(mRecipe.getId());
+                BakingPreferences.getInstance().setWidgetRecipeId(mRecipeId);
                 AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(this);
                 int[] appWidgetIds = appWidgetManager.getAppWidgetIds(new ComponentName(this, IngredientWidgetProvider.class));
                 IngredientWidgetProvider.updateAppWidget(this, appWidgetManager, appWidgetIds);
                 return true;
+            case android.R.id.home:
+                onBackPressed();
+                return true;
             default:
-                return false;
+                return true;
         }
 
     }
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
     protected void updateFollowingViewBinding(Bundle savedInstanceState) {
 
-
+        setupActionBar();
         Intent intentThatStartedThisActivity = getIntent();
         if (intentThatStartedThisActivity.hasExtra(ARGS_RECIPE_DETAIL)) {
-            mRecipe = Parcels.unwrap(intentThatStartedThisActivity.getParcelableExtra(ARGS_RECIPE_DETAIL));
-            if (getSupportFragmentManager().findFragmentByTag(FRAGMENT_RECIPE) == null)
-                showFragment(RecipeFragment.newInstance(mRecipe), FRAGMENT_RECIPE);
+            mRecipeId = intentThatStartedThisActivity.getIntExtra(ARGS_RECIPE_DETAIL, -1);
+            Fragment recipeFragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_RECIPE);
+            if (recipeFragment == null) {
+                showFragment(RecipeFragment.newInstance(mRecipeId), FRAGMENT_RECIPE);
+            }
         }
 
         if (fragmentViewStepContainer != null) {
             mTwoPane = true;
-            goToRecipeStepFragment(mRecipe.getSteps().get(0));
+            if (getSupportFragmentManager().findFragmentByTag(FRAGMENT_RECIPE_STEP) == null)
+                goToRecipeStepFragment(0);
         } else {
             mTwoPane = false;
         }
+    }
+
+    private void setupActionBar() {
+
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
     }
 
     @Override
@@ -85,19 +109,22 @@ public class RecipeDetailActivity extends BaseActivity implements BaseDetailFrag
     }
 
     @Override
-    public void goToRecipeStepFragment(Step step) {
-        if (getSupportFragmentManager().findFragmentByTag(FRAGMENT_RECIPE_STEP) == null) {
-            if(!mTwoPane) {
-                showFragment(RecipeStepFragment.newInstance(step), FRAGMENT_RECIPE_STEP);
-            }else{
-                showFragmentInTwoPane(RecipeStepFragment.newInstance(step));
+    public void goToRecipeStepFragment(int stepOrder) {
+        Fragment recipeStepFragment = getSupportFragmentManager().findFragmentByTag(FRAGMENT_RECIPE_STEP);
+        if (recipeStepFragment == null) {
+            if (!mTwoPane) {
+                showFragment(RecipeStepFragment.newInstance(mRecipeId, stepOrder), FRAGMENT_RECIPE_STEP);
+            } else {
+                showFragmentInTwoPane(RecipeStepFragment.newInstance(mRecipeId, stepOrder));
             }
+        } else {
+            ((RecipeStepFragment) recipeStepFragment).goToStep(stepOrder);
         }
     }
 
     public void showFragmentInTwoPane(BaseFragment fragment) {
         FragmentTransaction fragmenttransaction = getSupportFragmentManager().beginTransaction().setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_left, R.anim.enter_from_left, R.anim.exit_to_right);
-        fragmenttransaction.replace(R.id.fragmentStepContainer, fragment);
+        fragmenttransaction.replace(R.id.fragmentStepContainer, fragment, FRAGMENT_RECIPE_STEP);
         fragmenttransaction.commit();
     }
 }

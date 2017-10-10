@@ -7,11 +7,13 @@ import com.phuctran.makeabakingapp.domain.models.Step;
  */
 
 public abstract class BaseDetailFragment extends BaseFragment {
-    public void goToRecipeStepFragment(Step step) {
-        ((BaseFragmentResponder) getActivity()).goToRecipeStepFragment(step);
+    public void goToRecipeStepFragment(int stepOrder) {
+        ((BaseFragmentResponder) getActivity()).goToRecipeStepFragment(stepOrder);
     }
 
-    public  interface BaseFragmentResponder extends BaseFragment.BaseFragmentResponder {
-        void goToRecipeStepFragment(Step step);
+
+
+    public interface BaseFragmentResponder extends BaseFragment.BaseFragmentResponder {
+        void goToRecipeStepFragment(int recipeId);
     }
 }

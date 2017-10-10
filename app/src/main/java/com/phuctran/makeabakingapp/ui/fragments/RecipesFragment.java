@@ -1,6 +1,10 @@
 package com.phuctran.makeabakingapp.ui.fragments;
 
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.annotation.VisibleForTesting;
+import android.support.test.espresso.IdlingResource;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -12,12 +16,11 @@ import com.phuctran.makeabakingapp.mvp.views.RecipesContract;
 import com.phuctran.makeabakingapp.ui.activities.RecipeDetailActivity;
 import com.phuctran.makeabakingapp.ui.adapters.RecipeAdapter;
 
-import org.parceler.Parcels;
-
 import java.util.List;
 
 import butterknife.BindView;
 
+import com.phuctran.makeabakingapp.utils.testing.idlingResource.SimpleIdlingResource;
 
 /**
  * Created by phuctran on 9/20/17.
@@ -38,6 +41,9 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
     private RecipeAdapter mMovieAdapter;
     private List<Recipe> mRecipes;
 
+    @Nullable
+    private SimpleIdlingResource mIdlingResource;
+
     public RecipesFragment() {
         this.mPresenter = new RecipesPresenter(this, Injection.provideGetRecipesUseCase());
     }
@@ -56,6 +62,9 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
     protected void updateFollowingViewBinding() {
         setupRecyclerView();
         setActionBarTitle(R.string.baking_time);
+        if (mIdlingResource != null) {
+            mIdlingResource.setIdleState(false);
+        }
         mPresenter.doGetRecipes();
     }
 
@@ -78,10 +87,14 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
 
     @Override
     public void renderRecipes(List<Recipe> recipes) {
+
         this.mRecipes = recipes;
         mMovieAdapter = new RecipeAdapter(getContext(), mRecipes,
                 this);
         mRvRecipes.setAdapter(mMovieAdapter);
+        if (mIdlingResource != null) {
+            mIdlingResource.setIdleState(true);
+        }
     }
 
     private void setupRecyclerView() {
@@ -94,7 +107,16 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
     @Override
     public void onListItemClick(Recipe movieModel) {
         Intent startChildActivityIntent = new Intent(getContext(), RecipeDetailActivity.class);
-        startChildActivityIntent.putExtra(RecipeDetailActivity.ARGS_RECIPE_DETAIL, Parcels.wrap(movieModel));
+        startChildActivityIntent.putExtra(RecipeDetailActivity.ARGS_RECIPE_DETAIL, movieModel.getId());
         startActivity(startChildActivityIntent);
+    }
+
+    @VisibleForTesting
+    @NonNull
+    public IdlingResource getIdlingResource() {
+        if (mIdlingResource == null) {
+            mIdlingResource = new SimpleIdlingResource();
+        }
+        return mIdlingResource;
     }
 }

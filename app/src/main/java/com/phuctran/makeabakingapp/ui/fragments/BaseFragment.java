@@ -59,6 +59,11 @@ public abstract class BaseFragment extends Fragment {
     }
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d(getSubclassName(), (new StringBuilder()).append("onCreate:").append(getClass().getName()).toString());
