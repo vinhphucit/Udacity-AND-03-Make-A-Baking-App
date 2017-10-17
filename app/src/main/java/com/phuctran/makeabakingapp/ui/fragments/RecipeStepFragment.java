@@ -1,6 +1,5 @@
 package com.phuctran.makeabakingapp.ui.fragments;
 
-import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,12 +8,17 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.exoplayer2.DefaultLoadControl;
+import com.google.android.exoplayer2.ExoPlaybackException;
+import com.google.android.exoplayer2.ExoPlayer;
 import com.google.android.exoplayer2.ExoPlayerFactory;
 import com.google.android.exoplayer2.LoadControl;
 import com.google.android.exoplayer2.SimpleExoPlayer;
+import com.google.android.exoplayer2.Timeline;
 import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
 import com.google.android.exoplayer2.source.ExtractorMediaSource;
+import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
+import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
@@ -23,10 +27,10 @@ import com.phuctran.makeabakingapp.R;
 import com.phuctran.makeabakingapp.domain.models.Step;
 import com.phuctran.makeabakingapp.mvp.presenters.RecipeStepPresenter;
 import com.phuctran.makeabakingapp.mvp.views.RecipeStepContract;
-import com.phuctran.makeabakingapp.ui.activities.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import timber.log.Timber;
 
 /**
  * Created by phuctran on 9/20/17.
@@ -38,6 +42,8 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
     public static final String ARGS_RECIPE_ID = "ARGS_RECIPE_ID";
     public static final String ARGS_STEP_ORDER = "KEY_STEP_ORDER";
     public static final String ARGS_CURRENT_PLAY_POSSITION = "ARGS_CURRENT_PLAY_POSSITION";
+    public static final String ARGS_PLAYING_STATE = "ARGS_PLAYING_STATE";
+
     @Nullable
     @BindView(R.id.recipe_step_description)
     TextView recipe_step_description;
@@ -51,6 +57,7 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
     private long mCurrentPlayPosition = -1;
     private int mRecipeId;
     private int mStepOrder;
+    private boolean isPlayingWhenReady = true;
     private Step mRecipeStep;
     private RecipeStepContract.Presenter mPresenter;
     private SimpleExoPlayer mExoPlayer = null;
@@ -76,6 +83,9 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
             this.mRecipeId = getArguments().getInt(ARGS_RECIPE_ID);
         if (getArguments() != null && getArguments().containsKey(ARGS_STEP_ORDER))
             this.mStepOrder = getArguments().getInt(ARGS_STEP_ORDER);
+        if (getArguments() != null && getArguments().containsKey(ARGS_PLAYING_STATE))
+            this.isPlayingWhenReady = getArguments().getBoolean(ARGS_PLAYING_STATE);
+
     }
 
     @Override
@@ -84,6 +94,7 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
 
         outState.putInt(ARGS_RECIPE_ID, mRecipeId);
         outState.putInt(ARGS_STEP_ORDER, mStepOrder);
+        outState.putBoolean(ARGS_PLAYING_STATE, isPlayingWhenReady);
         if (mCurrentPlayPosition > 0)
             outState.putLong(ARGS_CURRENT_PLAY_POSSITION, mCurrentPlayPosition);
     }
@@ -150,6 +161,38 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
         LoadControl loadControl = new DefaultLoadControl();
         mExoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
         recipe_step_video.setPlayer(mExoPlayer);
+        mExoPlayer.addListener(new ExoPlayer.EventListener() {
+            @Override
+            public void onTimelineChanged(Timeline timeline, Object manifest) {
+
+            }
+
+            @Override
+            public void onTracksChanged(TrackGroupArray trackGroups, TrackSelectionArray trackSelections) {
+
+            }
+
+            @Override
+            public void onLoadingChanged(boolean isLoading) {
+
+            }
+
+            @Override
+            public void onPlayerStateChanged(boolean playWhenReady, int playbackState) {
+                Timber.d("PlayWhenRead " + playWhenReady);
+                isPlayingWhenReady = playWhenReady;
+            }
+
+            @Override
+            public void onPlayerError(ExoPlaybackException error) {
+
+            }
+
+            @Override
+            public void onPositionDiscontinuity() {
+
+            }
+        });
     }
 
     private void playVideo() {
@@ -164,7 +207,7 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
         ExtractorMediaSource videoSource = new ExtractorMediaSource(mp4VideoUri,
                 dataSourceFactory, extractorsFactory, null, null);
         mExoPlayer.prepare(videoSource);
-        mExoPlayer.setPlayWhenReady(true);
+        mExoPlayer.setPlayWhenReady(isPlayingWhenReady);
         if (mCurrentPlayPosition > 0) {
             mExoPlayer.seekTo(mCurrentPlayPosition);
         }

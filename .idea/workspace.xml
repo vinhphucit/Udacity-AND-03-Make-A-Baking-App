@@ -11,13 +11,7 @@
   <component name="ChangeListManager">
     <list default="true" id="d28c755e-df66-499e-a4f2-6ffa4457033f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipeListTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipeListTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/mvp/presenters/RecipesPresenter.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/mvp/presenters/RecipesPresenter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/activities/RecipesActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/activities/RecipesActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/widgets/IngredientWidgetProvider.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/widgets/IngredientWidgetProvider.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/widgets/ListWidgetService.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/widgets/ListWidgetService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java" />
     </list>
     <ignored path="Make A Baking App.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -52,7 +46,7 @@
       <file leaf-file-name="RecipesFragment.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="215">
+            <state relative-caret-position="958">
               <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
               <folding>
                 <element signature="e#1263#1264#0" expanded="true" />
@@ -82,34 +76,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BakingRepository.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/data/BakingRepository.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="34" column="39" selection-start-line="34" selection-start-column="39" selection-end-line="34" selection-end-column="39" />
-              <folding>
-                <element signature="e#1024#1025#0" expanded="true" />
-                <element signature="e#1083#1084#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BakingDataSource.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/data/BakingDataSource.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RecipeListTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecipeListTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipeListTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="58">
-              <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+            <state relative-caret-position="388">
+              <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -124,6 +95,16 @@
                 <element signature="e#1464#1658#0" expanded="true" />
                 <element signature="e#1657#1658#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="RecipeStepFragment.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="254">
+              <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -2218,7 +2199,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/domain/usecases/GetRecipesUseCase.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/domain/models/Ingredient.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/domain/models/Step.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/widgets/widget/IngredientsWidgetConfigureActivity.java" />
@@ -2254,7 +2234,6 @@
         <option value="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/activity_recipe_detail.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_recipe_step.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/BaseFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/activities/RecipeDetailActivity.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipesActivityTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/utils/idlingResource/SimpleIdlingResource.java" />
@@ -2269,6 +2248,8 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipeListTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/activities/RecipesActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/test/java/com/phuctran/makeabakingapp/RxJavaTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java" />
       </list>
     </option>
   </component>
@@ -2360,6 +2341,10 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="makeabakingapp" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2688,7 +2673,7 @@
       <recent name="$PROJECT_DIR$/app/src/main/res" />
     </key>
   </component>
-  <component name="RunManager" selected="Android Instrumented Tests.RecipeListTest (1)">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="false" name="ExampleInstrumentedT..." type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="TESTING_TYPE" value="2" />
@@ -2831,6 +2816,32 @@
         <option name="SUPPORT_LIB_ENABLED" value="true" />
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
+      <method />
+    </configuration>
+    <configuration default="false" name="RxJavaTest" type="AndroidJUnit" factoryName="Android JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="com.phuctran.makeabakingapp.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="app" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.phuctran.makeabakingapp" />
+      <option name="MAIN_CLASS_NAME" value="com.phuctran.makeabakingapp.RxJavaTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
       <method />
     </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -3144,17 +3155,19 @@
       <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
       <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
       <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest" />
       <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest (1)" />
+      <item index="4" class="java.lang.String" itemvalue="Android JUnit.RxJavaTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest (1)" />
-        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest" />
-        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Android JUnit.RxJavaTest" />
+        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest (1)" />
+        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.RecipeListTest" />
+        <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -3193,15 +3206,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="RecipeListTest - 2017.10.17 at 12h 13m 01s.xml">
-      <configuration name="RecipeListTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="RecipeListTest - 2017.10.17 at 12h 14m 17s.xml">
-      <configuration name="RecipeListTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
-    <history-entry file="RecipeListTest - 2017.10.17 at 12h 14m 42s.xml">
-      <configuration name="RecipeListTest" configurationId="AndroidTestRunConfigurationType" />
-    </history-entry>
     <history-entry file="RecipeListTest - 2017.10.17 at 14h 22m 54s.xml">
       <configuration name="RecipeListTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -3223,26 +3227,35 @@
     <history-entry file="RecipeListTest_(1) - 2017.10.17 at 14h 27m 04s.xml">
       <configuration name="RecipeListTest (1)" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
+    <history-entry file="RxJavaTest - 2017.10.17 at 15h 05m 33s.xml">
+      <configuration name="RxJavaTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="RxJavaTest - 2017.10.17 at 15h 05m 41s.xml">
+      <configuration name="RxJavaTest" configurationId="AndroidJUnit" />
+    </history-entry>
+    <history-entry file="RxJavaTest - 2017.10.17 at 15h 36m 27s.xml">
+      <configuration name="RxJavaTest" configurationId="AndroidJUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1554" height="1196" extended-state="0" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5" sideWeight="0.46065807" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4537037" sideWeight="0.27314815" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.14722222" sideWeight="0.66071427" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6101852" sideWeight="0.3425926" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.6101852" sideWeight="0.6574074" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972974" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4537037" sideWeight="0.7268519" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4537037" sideWeight="0.7268519" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948717" sideWeight="0.49713877" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32987553" sideWeight="0.49361023" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2850529" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2850529" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32592592" sideWeight="0.47949734" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -3286,7 +3299,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java</url>
-          <line>111</line>
+          <line>122</line>
           <properties />
           <option name="timeStamp" value="66" />
         </line-breakpoint>
@@ -3326,14 +3339,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/utils/RxUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="44" selection-start-line="8" selection-start-column="44" selection-end-line="8" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/domain/usecases/GetRecipeUseCase.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -3531,14 +3536,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="58" column="68" selection-start-line="58" selection-start-column="68" selection-end-line="58" selection-end-column="68" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/adapters/RecipeAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -3726,17 +3723,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="215">
-          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
-          <folding>
-            <element signature="e#1263#1264#0" expanded="true" />
-            <element signature="e#1307#1308#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/utils/testing/idlingResource/SimpleIdlingResource.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="480">
@@ -3747,8 +3733,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/phuctran/makeabakingapp/RecipeListTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="33" column="55" selection-start-line="33" selection-start-column="55" selection-end-line="33" selection-end-column="55" />
+        <state relative-caret-position="388">
+          <caret line="55" column="9" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/test/java/com/phuctran/makeabakingapp/RxJavaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="59" selection-start-line="21" selection-start-column="59" selection-end-line="21" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipesFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="958">
+          <caret line="95" column="0" selection-start-line="95" selection-start-column="0" selection-end-line="95" selection-end-column="0" />
+          <folding>
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1307#1308#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/phuctran/makeabakingapp/ui/fragments/RecipeStepFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="254">
+          <caret line="185" column="21" selection-start-line="185" selection-start-column="21" selection-end-line="185" selection-end-column="21" />
           <folding />
         </state>
       </provider>
