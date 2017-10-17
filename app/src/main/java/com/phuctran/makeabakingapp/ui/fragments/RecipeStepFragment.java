@@ -109,6 +109,8 @@ public class RecipeStepFragment extends BaseDetailFragment implements RecipeStep
                 this.mStepOrder = savedInstanceState.getInt(ARGS_STEP_ORDER);
             if (savedInstanceState.containsKey(ARGS_CURRENT_PLAY_POSSITION))
                 this.mCurrentPlayPosition = savedInstanceState.getLong(ARGS_CURRENT_PLAY_POSSITION);
+            if (savedInstanceState.containsKey(ARGS_PLAYING_STATE))
+                this.isPlayingWhenReady = savedInstanceState.getBoolean(ARGS_PLAYING_STATE);
 
         }
         mPresenter.setCurrentStep(mStepOrder);
