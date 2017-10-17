@@ -42,7 +42,7 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
     private List<Recipe> mRecipes;
 
     @Nullable
-    private SimpleIdlingResource mIdlingResource;
+    private SimpleIdlingResource mIdlingResource = (SimpleIdlingResource) getIdlingResource();
 
     public RecipesFragment() {
         this.mPresenter = new RecipesPresenter(this, Injection.provideGetRecipesUseCase());
@@ -62,10 +62,11 @@ public class RecipesFragment extends BaseFragment implements RecipesContract.Vie
     protected void updateFollowingViewBinding() {
         setupRecyclerView();
         setActionBarTitle(R.string.baking_time);
+
+        mPresenter.doGetRecipes();
         if (mIdlingResource != null) {
             mIdlingResource.setIdleState(false);
         }
-        mPresenter.doGetRecipes();
     }
 
     @Override

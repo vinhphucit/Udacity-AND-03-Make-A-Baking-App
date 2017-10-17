@@ -29,13 +29,12 @@ import static org.hamcrest.Matchers.allOf;
  */
 
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 public class RecipeListTest {
     public static RecyclerViewMatcher withRecyclerView(final int recyclerViewId) {
         return new RecyclerViewMatcher(recyclerViewId);
     }
     @Rule
-    public ActivityTestRule<RecipesActivity> mActivityRule = new ActivityTestRule<RecipesActivity>(RecipesActivity.class);
+    public ActivityTestRule<RecipesActivity> mActivityRule = new ActivityTestRule<>(RecipesActivity.class);
 
     private IdlingResource mIdlingResource;
 

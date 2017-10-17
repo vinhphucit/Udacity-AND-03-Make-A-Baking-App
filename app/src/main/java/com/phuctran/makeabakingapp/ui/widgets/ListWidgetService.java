@@ -2,6 +2,8 @@ package com.phuctran.makeabakingapp.ui.widgets;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.IBinder;
+import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
 
@@ -13,6 +15,8 @@ import com.phuctran.makeabakingapp.domain.models.Recipe;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.phuctran.makeabakingapp.ui.widgets.IngredientWidgetProvider.mChoosedIngredients;
+
 
 public class ListWidgetService extends RemoteViewsService {
     public static final String KEY_RECIPE = "KEY_RECIPE";
@@ -23,27 +27,28 @@ public class ListWidgetService extends RemoteViewsService {
     }
 
     class ListRemoteViewFactory implements RemoteViewsService.RemoteViewsFactory {
-
+        private final String TAG = ListRemoteViewFactory.class.getSimpleName();
 
         private final Context mContext;
         private final Intent intent;
         private List<Ingredient> ingredients = new ArrayList<>();
 
         public ListRemoteViewFactory(Context context, Intent intent) {
-
+            Log.d(TAG, "constructor");
             this.mContext = context;
             this.intent = intent;
         }
 
         @Override
         public void onCreate() {
+            Log.d(TAG, "onCreate");
             Recipe recipe = new Gson().fromJson(intent.getStringExtra(KEY_RECIPE), Recipe.class);
             ingredients = recipe.getIngredients();
         }
 
         @Override
         public void onDataSetChanged() {
-
+            this.ingredients = mChoosedIngredients;
         }
 
         @Override
